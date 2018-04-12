@@ -162,7 +162,6 @@ L.MarkerClusterNonAnimated = L.MarkerCluster.extend({
 
 			fg.addLayer(m);
 		}
-		this.setOpacity(0.3);
 
 		group._ignoreMove = false;
 		group.fire('spiderfied', {
@@ -308,7 +307,7 @@ L.MarkerCluster.include({
 			}
 
 			//Close any popup on the marker first, otherwise setting the location of the marker will make the map scroll
-			m.closePopup();
+			//m.closePopup();
 
 			//Fix up the location to the real one
 			m.setLatLng(m._preSpiderfyLatlng);
@@ -439,6 +438,7 @@ L.MarkerClusterGroup.include({
 	},
 
 	_unspiderfyWrapper: function () {
+		return;
 		/// <summary>_unspiderfy but passes no arguments</summary>
 		this._unspiderfy();
 	},

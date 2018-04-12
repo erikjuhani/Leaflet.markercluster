@@ -855,6 +855,13 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			cluster.zoomToBounds();
 		}
 
+		if (cluster._group._spiderfied) {
+			cluster.unspiderfy();
+		}
+
+		// Refresh cluster icons on cluster click
+		this.refreshClusters();
+
 		// Focus the map again for keyboard users.
 		if (e.originalEvent && e.originalEvent.keyCode === 13) {
 			this._map._container.focus();
