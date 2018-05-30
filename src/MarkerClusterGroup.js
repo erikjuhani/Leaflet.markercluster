@@ -839,7 +839,14 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	_zoomOrSpiderfy: function (e) {
 		var cluster = e.layer,
-		    bottomCluster = cluster;
+				bottomCluster = cluster;
+
+			if (this.lastCluster && this.lastCluster._group._spiderfied) {
+				this.lastCluster.unspiderfy();
+				this.lastCluster = null;
+			} else {
+				this.lastCluster = cluster;
+			}
 
 		while (bottomCluster._childClusters.length === 1) {
 			bottomCluster = bottomCluster._childClusters[0];
